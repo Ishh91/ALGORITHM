@@ -18,6 +18,7 @@ struct Btree *createNode(int val, struct Btree *child) {
   newNode->val[1] = val;
   newNode->count = 1;
   newNode->link[0] = root;
+  
   newNode->link[1] = child;
   return newNode;
 }
@@ -80,8 +81,7 @@ int setValue(int val, int *pval,
     pos = 0;
   } else {
     for (pos = node->count;
-       (val < node->val[pos] && pos > 1); pos--)
-      ;
+       (val < node->val[pos] && pos > 1); pos--);
     if (val == node->val[pos]) {
       printf("Duplicates are not permitted\n");
       return 0;
